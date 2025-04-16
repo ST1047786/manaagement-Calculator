@@ -14,9 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rdInstall: RadioButton
-    private lateinit var rdBuild: RadioButton
-    private lateinit var rdAssemble: RadioButton
+    private lateinit var rdGroupTask: RadioGroup
     private lateinit var cbWood: CheckBox
     private lateinit var cbNail: CheckBox
     private lateinit var cbHinges: CheckBox
@@ -25,9 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTotalPrice: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        rdInstall =findViewById(R.id.rdInstall)
-        rdBuild =findViewById(R.id.rdBuild)
-        rdAssemble =findViewById(R.id.rdAssemble)
+        rdGroupTask =findViewById(R.id.rdGroupTask)
         cbWood = findViewById(R.id.cbWood)
         cbNail = findViewById(R.id.cbNail)
         cbHinges =findViewById(R.id.cbHinges)
@@ -35,46 +31,34 @@ class MainActivity : AppCompatActivity() {
         btnCalculate =findViewById(R.id.btnCalculate)
         tvTotalPrice =findViewById(R.id.tvTotalPrice)
 
-
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        btnCalculate.setOnClickListener{
+            calculate()
         }
     }
     private fun calculate() {
+
+        val hoursText = etHours.text.toString()//checks validity of hours
+        if (hoursText.isEmpty()|| hoursText.toIntOrNull()== null ||hoursText.toInt()<=0){
+            Toast.makeText(this, "Please enter the number of hours.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        // verify if tasked have been selected
+
+        val rdGroupTasks
+        if (rdGroupTasks.checkedRadioButtonId == -1) {
+            Toast.makeText(this, "Please select a task.", Toast.LENGTH_SHORT).show()
+            return
+
+        }
+        val hours = hoursText.toInt()
         var materialCost = 0
 
         if (cbWood.isChecked) materialCost += 500
         if (cbNail.isChecked) materialCost += 20
         if (cbHinges.isChecked) materialCost += 30
 
-        // G
-        val hoursText = etHours.text.toString()
-        if (hoursText.isEmpty()) {
-            Toast.makeText(this, "Please enter the number of hours.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val hours = hoursText.toIntOrNull()
-        if (hours == null || hours <= 0) {
-            Toast.makeText(this, "Enter a valid positive number of hours.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // Check if at least one material is selected
-        if (!cbWood.isChecked && !cbNail.isChecked && !cbHinges.isChecked) {
-            Toast.makeText(this, "Please select at least one material.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // verify if tasked have been selected
-        val radioGroupTasks = null
-        if (radioGroupTasks == -1) {
-            Toast.makeText(this, "Please select a task.", Toast.LENGTH_SHORT).show()
+        if (materialCost ==0){
+            Toast.makeText(this,"please select at least one material",Toast.LENGTH_SHORT).show()
             return
         }
 

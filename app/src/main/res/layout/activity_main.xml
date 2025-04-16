@@ -29,6 +29,7 @@
             android:textStyle="bold" />
 
         <RadioGroup
+            android:id="@+id/rdGroupTask"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -106,7 +107,7 @@
                 android:layout_margin="20dp"
                 android:background="#E9AC75"
                 android:text="TextView" />
-
         </RadioGroup>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
