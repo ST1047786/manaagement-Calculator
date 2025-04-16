@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/img">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="#E9AC75"
+            android:text="management calculator"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/rdInstall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFDD0"
+                android:text="install door" />
+
+            <RadioButton
+                android:id="@+id/rdBuild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFDD0"
+                android:text="build shelf" />
+
+            <RadioButton
+                android:id="@+id/rdAssemble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFDD0"
+                android:text="Assemle furniture" />
+
+            <TextView
+                android:id="@+id/tvSelect"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:background="#E9AC75"
+                android:text="selct materials" />
+
+            <CheckBox
+                android:id="@+id/cbWood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFDD0"
+                android:text="wood" />
+
+            <CheckBox
+                android:id="@+id/cbNail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFDD0"
+                android:text="nail" />
+
+            <CheckBox
+                android:id="@+id/cbHinges"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFDD0"
+                android:text="hinges " />
+
+            <EditText
+                android:id="@+id/etHours"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:background="#E9AC75"
+                android:ems="10"
+                android:hint="Enter Number Of Hours "
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:text="calculate " />
+
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="20dp"
+                android:background="#E9AC75"
+                android:text="TextView" />
+
+        </RadioGroup>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
